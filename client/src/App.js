@@ -11,6 +11,7 @@ function App() {
   return (
     <article>
       <Navbar className="bg-secondary text-white">Navigation</Navbar>
+
       <Container>
         <Search />
       </Container>

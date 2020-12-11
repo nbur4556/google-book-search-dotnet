@@ -1,8 +1,9 @@
 import React from 'react';
 
 // Bootstrap Components
-import InputGroup from 'react-bootstrap/InputGroup';
+import Card from 'react-bootstrap/Card';
 import FormControl from 'react-bootstrap/FormControl';
+import InputGroup from 'react-bootstrap/InputGroup';
 
 function Search() {
     return (<section>
@@ -12,6 +13,13 @@ function Search() {
             </InputGroup.Prepend>
             <FormControl ariaDescribedby="searchLabel" />
         </InputGroup>
+
+        <Card>
+            <Card.Header>Results</Card.Header>
+            <Card.Body>
+                Results Here
+            </Card.Body>
+        </Card>
     </section>);
 }
 
