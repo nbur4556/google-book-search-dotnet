@@ -7,9 +7,10 @@ import Image from 'react-bootstrap/Image';
 function BookItem() {
     return (
         <ListGroup.Item>
+
             <ListGroup variant="horizontal flush">
                 <ListGroup.Item className="border-0">
-                    <Image />
+                    <Image src="https://via.placeholder.com/150" />
                 </ListGroup.Item>
                 <ListGroup.Item className="border-0">Book Name</ListGroup.Item>
                 <ListGroup.Item className="border-0">
@@ -23,6 +24,7 @@ function BookItem() {
                 </ListGroup.Item>
                 <ListGroup.Item className="border-0">Book Options</ListGroup.Item>
             </ListGroup>
+
         </ListGroup.Item>
     );
 }
