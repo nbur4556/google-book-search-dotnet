@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 //Bootstrap Components
 import Container from 'react-bootstrap/Container';
@@ -14,8 +15,10 @@ function App() {
       <Navbar className="bg-secondary text-white">Navigation</Navbar>
 
       <Container>
-        <Saved />
-        {/* <Search /> */}
+        <BrowserRouter>
+          <Route exact path="/"><Saved /></Route>
+          <Route exact path="/search"><Search /></Route>
+        </BrowserRouter>
       </Container>
     </article>
   );
