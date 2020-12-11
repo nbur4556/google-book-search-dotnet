@@ -7,6 +7,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 
 // Components
 import BookResults from '../components/BookResults.js';
+import PageHeader from '../components/PageHeader.js';
 
 function Search() {
     const margin = 'my-4';
@@ -18,6 +19,8 @@ function Search() {
 
     return (
         <section>
+            <PageHeader pageName="Search Books" />
+
             <InputGroup className={margin}>
                 <InputGroup.Prepend>
                     <InputGroup.Text>Book Search</InputGroup.Text>
