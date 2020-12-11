@@ -1,8 +1,13 @@
 import React from 'react';
 
+// Components
+import PageHeader from '../components/PageHeader.js';
+
 function Saved() {
     return (
-        <section>Saved Page</section>
+        <section>
+            <PageHeader />
+        </section>
     )
 }
 
