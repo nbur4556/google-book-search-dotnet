@@ -12,15 +12,15 @@ import NavigationBar from './components/NavigationBar.js';
 function App() {
   return (
     <article>
-      <NavigationBar />
+      <BrowserRouter>
+        <NavigationBar />
 
-      {/* Page Content */}
-      <Container>
-        <BrowserRouter>
+        {/* Page Content */}
+        <Container>
           <Route exact path="/"><Saved /></Route>
           <Route exact path="/search"><Search /></Route>
-        </BrowserRouter>
-      </Container>
+        </Container>
+      </BrowserRouter>
     </article>
   );
 }
