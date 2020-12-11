@@ -6,7 +6,7 @@ import PageHeader from '../components/PageHeader.js';
 function Saved() {
     return (
         <section>
-            <PageHeader />
+            <PageHeader pageName="Saved Books" />
         </section>
     )
 }

@@ -1,10 +1,12 @@
 import React from 'react';
 
-function PageHeader() {
+import Jumbotron from 'react-bootstrap/Jumbotron';
+
+function PageHeader(props) {
     return (
-        <section>
-            Page Name
-        </section>
+        <Jumbotron className="my-3">
+            <h1 className="text-dark">{props.pageName}</h1>
+        </Jumbotron>
     )
 }
 
