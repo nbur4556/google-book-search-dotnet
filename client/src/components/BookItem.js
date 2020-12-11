@@ -2,12 +2,15 @@ import React from 'react';
 
 // Bootstrap Component
 import ListGroup from 'react-bootstrap/ListGroup';
+import Image from 'react-bootstrap/Image';
 
 function BookItem() {
     return (
         <ListGroup.Item>
             <ListGroup variant="horizontal flush">
-                <ListGroup.Item className="border-0">Book Image</ListGroup.Item>
+                <ListGroup.Item className="border-0">
+                    <Image />
+                </ListGroup.Item>
                 <ListGroup.Item className="border-0">Book Name</ListGroup.Item>
                 <ListGroup.Item className="border-0">
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit,
