@@ -1,10 +1,12 @@
 import React from 'react';
 
 // Bootstrap Components
-import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import FormControl from 'react-bootstrap/FormControl';
 import InputGroup from 'react-bootstrap/InputGroup';
+
+// Components
+import BookResults from '../components/BookResults.js';
 
 function Search() {
     const margin = 'my-4';
@@ -22,12 +24,7 @@ function Search() {
             <Button className="bg-secondary border-secondary text-light mx-2" onClick={searchBook}>Search</Button>
         </InputGroup>
 
-        <Card className={margin}>
-            <Card.Header>Results</Card.Header>
-            <Card.Body>
-                Results Here
-            </Card.Body>
-        </Card>
+        <BookResults header="Results" margin={margin} />
     </section>);
 }
 
