@@ -1,0 +1,8 @@
+{
+  "short_name": "Google Book Search",
+  "name": "Google Book Search",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
