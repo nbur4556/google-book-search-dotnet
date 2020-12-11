@@ -5,6 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 
 // Components
+import Saved from './pages/Saved.js';
 import Search from './pages/Search.js';
 
 function App() {
@@ -13,7 +14,8 @@ function App() {
       <Navbar className="bg-secondary text-white">Navigation</Navbar>
 
       <Container>
-        <Search />
+        <Saved />
+        {/* <Search /> */}
       </Container>
     </article>
   );
