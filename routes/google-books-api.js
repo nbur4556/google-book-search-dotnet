@@ -7,6 +7,7 @@ const googleBooksApi = (app, process) => {
 
         axios.get(apiUrl).then((result) => {
             console.log(result.data.items);
+            res.json(result.data.items);
         });
     });
 }
