@@ -1,15 +1,19 @@
 const express = require('express');
+const dotenv = require('dotenv');
 const googleBooksApi = require('./routes/google-books-api.js')
 
+// Initialize Environment
+const process = {
+    env: dotenv.config({ path: `${__dirname + '/.env'}` }).parsed
+}
+
+// Initialize Application
 const app = express();
-const PORT = 8080;
 
-googleBooksApi();
+// API Routes
+googleBooksApi(app, process);
 
-app.get('/', (req, res) => {
-    res.send("Hello World");
-});
-
-app.listen(PORT, () => {
-    console.log("listening on localhost:" + PORT);
+// Create Server
+app.listen(process.env.PORT, () => {
+    console.log("listening on localhost:" + process.env.PORT);
 });
