@@ -6,7 +6,6 @@ const googleBooksApi = (app, process) => {
         const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=${bookTitle}&key=${process.env.GOOGLE_API_TOKEN}`;
 
         axios.get(apiUrl).then((result) => {
-            console.log(result.data.items);
             res.json(result.data.items);
         });
     });
