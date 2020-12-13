@@ -48,7 +48,7 @@ function Search() {
             </InputGroup>
 
             {/* Contains API Results for Found Books */}
-            <BookResults header="Results" margin={margin} />
+            <BookResults header="Results" margin={margin} books={searchState.searchResults} />
         </section>
     );
 }
