@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // Bootstrap Components
 import Button from 'react-bootstrap/Button';
@@ -31,7 +31,6 @@ function Search() {
     const searchBook = () => {
         api.searchBooksByName(searchState.searchTitle, data => {
             setSearchState({ ...searchState, searchResults: data });
-            console.log(searchState);
         });
     }
 
