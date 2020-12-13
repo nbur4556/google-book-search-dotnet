@@ -29,8 +29,8 @@ function Search() {
 
     // Searches API for Books
     const searchBook = () => {
-        api.searchBooksByName(searchState.searchTitle, data => {
-            setSearchState({ ...searchState, searchResults: data });
+        api.searchBooksByName(searchState.searchTitle, (data, err) => {
+            (!err) ? setSearchState({ ...searchState, searchResults: data }) : console.log('error');
         });
     }
 

@@ -13,6 +13,8 @@ Api.prototype.searchBooksByName = function (name, cb) {
 
     fetch(this.searchUrl + urlName).then(response => response.json()).then(data => {
         cb(data);
+    }).catch(err => {
+        cb(null, err);
     });
 }
 
