@@ -18,7 +18,8 @@ function Search() {
 
     // State
     const [searchState, setSearchState] = useState({
-        searchTitle: ''
+        searchTitle: '',
+        searchResults: []
     });
 
     // Update Book Search Text and State
@@ -28,7 +29,10 @@ function Search() {
 
     // Searches API for Books
     const searchBook = () => {
-        api.searchBooksByName(searchState.searchTitle);
+        api.searchBooksByName(searchState.searchTitle, data => {
+            setSearchState({ ...searchState, searchResults: data });
+            console.log(searchState);
+        });
     }
 
     return (
