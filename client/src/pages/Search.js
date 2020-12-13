@@ -9,12 +9,16 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import BookResults from '../components/BookResults.js';
 import PageHeader from '../components/PageHeader.js';
 
+// Assets
+import Api from '../util/api.js';
+
 function Search() {
+    const api = new Api();
     const margin = 'my-4';
 
     // Searches API for Books
     const searchBook = () => {
-        console.log("Search Book");
+        api.searchBooksByName('harry+potter');
     }
 
     return (
