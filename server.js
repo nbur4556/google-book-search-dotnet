@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const googleBooksApi = require('./routes/google-books-api.js');
 
@@ -14,6 +15,15 @@ if (process.env.NODE_ENV === 'production') {
 else {
     process = { env: dotenv.config({ path: `${__dirname + '/.env'}` }).parsed }
 }
+
+//Initialize Database
+const db = {
+    Book: require('./models/Book.js'),
+    SavedBooks: require('./models/SavedBooks.js')
+}
+
+console.log(process.env.MONGODB_URI);
+// mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
 
 // API Routes
 googleBooksApi(app, process);
