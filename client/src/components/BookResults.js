@@ -19,7 +19,8 @@ function BookResults(props) {
                             ? props.books.map((book, key) => {
                                 return (
                                     <BookItem key={key} bookDetails={{
-                                        imageSrc: book.volumeInfo.imageLinks.smallThumbnail,
+                                        imageSrc: (book.volumeInfo.imageLinks === undefined)
+                                            ? "https://via.placeholder.com/150" : book.volumeInfo.imageLinks.smallThumbnail,
                                         title: book.volumeInfo.title,
                                         description: book.volumeInfo.description
                                     }} options={(<a href=".">Save</a>)} />
