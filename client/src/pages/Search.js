@@ -14,7 +14,6 @@ import Api from '../util/api.js';
 
 function Search() {
     const api = new Api();
-    const margin = 'my-4';
 
     // State
     const [searchState, setSearchState] = useState({
@@ -33,7 +32,7 @@ function Search() {
         api.searchBooksByName(searchState.searchTitle, (data, err) => {
             (!err)
                 ? setSearchState({ ...searchState, searchResults: data, searchError: null })
-                : setSearchState({ ...searchState, searchResults: data, searchError: err });
+                : setSearchState({ ...searchState, searchResults: [], searchError: err });
         });
     }
 
@@ -41,7 +40,7 @@ function Search() {
         <section>
             <PageHeader pageName="Search Books" />
 
-            <InputGroup className={margin}>
+            <InputGroup className="my-4">
                 <InputGroup.Prepend>
                     <InputGroup.Text>Book Search</InputGroup.Text>
                 </InputGroup.Prepend>
@@ -50,7 +49,7 @@ function Search() {
             </InputGroup>
 
             {/* Contains API Results for Found Books */}
-            <BookResults header="Results" margin={margin} books={searchState.searchResults} err={searchState.searchError} />
+            <BookResults header="Results" margin="my-4" books={searchState.searchResults} err={searchState.searchError} />
         </section>
     );
 }
