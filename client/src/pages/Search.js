@@ -21,10 +21,14 @@ function Search() {
         searchTitle: ''
     });
 
+    // Update Book Search Text and State
+    const updateBookSearch = e => {
+        setSearchState({ ...searchState, searchTitle: e.target.value });
+    }
+
     // Searches API for Books
     const searchBook = () => {
-        console.log(searchState.searchTitle);
-        api.searchBooksByName('harry+potter');
+        api.searchBooksByName(searchState.searchTitle);
     }
 
     return (
@@ -35,7 +39,7 @@ function Search() {
                 <InputGroup.Prepend>
                     <InputGroup.Text>Book Search</InputGroup.Text>
                 </InputGroup.Prepend>
-                <FormControl />
+                <FormControl onChange={updateBookSearch} />
                 <Button className="bg-secondary border-secondary text-light mx-2" onClick={searchBook}>Search</Button>
             </InputGroup>
 
