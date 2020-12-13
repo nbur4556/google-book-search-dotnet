@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 // Bootstrap Components
 import Button from 'react-bootstrap/Button';
@@ -19,18 +19,21 @@ function Search() {
     // State
     const [searchState, setSearchState] = useState({
         searchTitle: '',
-        searchResults: []
+        searchResults: [],
+        searchError: null
     });
 
     // Update Book Search Text and State
-    const updateBookSearch = e => {
+    const handleBookSearchInput = e => {
         setSearchState({ ...searchState, searchTitle: e.target.value });
     }
 
     // Searches API for Books
-    const searchBook = () => {
+    const handleBookSearch = () => {
         api.searchBooksByName(searchState.searchTitle, (data, err) => {
-            (!err) ? setSearchState({ ...searchState, searchResults: data }) : console.log('error');
+            (!err)
+                ? setSearchState({ ...searchState, searchResults: data, searchError: null })
+                : setSearchState({ ...searchState, searchResults: data, searchError: err });
         });
     }
 
@@ -42,12 +45,12 @@ function Search() {
                 <InputGroup.Prepend>
                     <InputGroup.Text>Book Search</InputGroup.Text>
                 </InputGroup.Prepend>
-                <FormControl onChange={updateBookSearch} />
-                <Button className="bg-secondary border-secondary text-light mx-2" onClick={searchBook}>Search</Button>
+                <FormControl onChange={handleBookSearchInput} />
+                <Button className="bg-secondary border-secondary text-light mx-2" onClick={handleBookSearch}>Search</Button>
             </InputGroup>
 
             {/* Contains API Results for Found Books */}
-            <BookResults header="Results" margin={margin} books={searchState.searchResults} />
+            <BookResults header="Results" margin={margin} books={searchState.searchResults} err={searchState.searchError} />
         </section>
     );
 }
