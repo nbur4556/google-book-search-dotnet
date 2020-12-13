@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 // Bootstrap Components
 import Button from 'react-bootstrap/Button';
@@ -16,8 +16,14 @@ function Search() {
     const api = new Api();
     const margin = 'my-4';
 
+    // State
+    const [searchState, setSearchState] = useState({
+        searchTitle: ''
+    });
+
     // Searches API for Books
     const searchBook = () => {
+        console.log(searchState.searchTitle);
         api.searchBooksByName('harry+potter');
     }
 
