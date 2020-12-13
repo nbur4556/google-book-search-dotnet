@@ -8,7 +8,7 @@ function Saved() {
     return (
         <section>
             <PageHeader pageName="Saved Books" />
-            <BookResults header="Saved Books" />
+            <BookResults header="Results" margin="my-4" books={null} err="ERROR" />
         </section>
     )
 }
