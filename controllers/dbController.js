@@ -38,5 +38,14 @@ module.exports = {
         }).catch(err => {
             cb(err);
         });
+    },
+
+    // Delete a book from the database
+    deleteBook: function (bookId, cb) {
+        this.db.Book.deleteOne({ _id: bookId }).then(data => {
+            cb(data);
+        }).catch(err => {
+            cb(err);
+        });
     }
 }

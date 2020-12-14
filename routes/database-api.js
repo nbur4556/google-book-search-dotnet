@@ -17,7 +17,9 @@ const databaseApi = (app) => {
 
     // Delete Book
     app.delete('/api/books/delete/:bookId', (req, res) => {
-        console.log("Delete Book");
+        dbController.deleteBook(req.params.bookId, (result => {
+            res.json(result);
+        }));
     });
 }
 
