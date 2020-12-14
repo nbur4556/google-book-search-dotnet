@@ -58,11 +58,17 @@ function Search() {
         const bookId = e.target.attributes.databookid.value;
         const book = searchState.searchResults[bookId];
 
+        handleDisplayAlert();
+
         api.addSavedBook({
             title: book.title,
             description: book.description,
             image: book.image
         });
+    }
+
+    const handleDisplayAlert = () => {
+        setDisplayAlert(true);
     }
 
     return (
