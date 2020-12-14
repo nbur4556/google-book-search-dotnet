@@ -2,21 +2,20 @@ const mongoose = require('mongoose');
 
 
 module.exports = function (process) {
-    // console.log(process.env.MONGODB_URI);
+    // Initialize and Connect To Database
     const db = ({
         Book: require('../models/Book.js'),
         SavedBooks: require('../models/SavedBooks.js')
     });
 
-    console.log(db);
+    mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
-    mongoose.createConnection('mongodb://localhost/newbooklist', { useNewUrlParser: true, useUnifiedTopology: true });
-
-    // db.SavedBooks.create({ name: "My Book List" })
-    //     .then(dbSavedBooks => {
-    //         console.log(dbSavedBooks);
-    //     })
-    //     .catch(err => {
-    //         console.log(err);
-    //     });
+    // Create Initial Book List Collection
+    db.SavedBooks.create({ name: "My Book List" })
+        .then(response => {
+            console.log(response);
+        })
+        .catch(({ message }) => {
+            console.log(message);
+        });
 }
