@@ -69,6 +69,10 @@ function Search() {
 
     const handleDisplayAlert = () => {
         setDisplayAlert(true);
+
+        setTimeout(() => {
+            setDisplayAlert(false);
+        }, 2000);
     }
 
     return (
