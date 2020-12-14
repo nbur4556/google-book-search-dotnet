@@ -1,7 +1,11 @@
-const databaseApi = (app, process) => {
+const dbController = require('../controllers/dbController.js');
+
+const databaseApi = (app) => {
     // Get All Books
     app.get('/api/books', (req, res) => {
-        res.send("Get All Books");
+        dbController.getAllBooks(data => {
+            res.send(data);
+        });
     });
 
     // Add Book

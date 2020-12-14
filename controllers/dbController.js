@@ -16,7 +16,7 @@ module.exports = {
                 console.log(message);
             });
     },
-    test: function (cb) {
+    getAllBooks: function (cb) {
         console.log('test');
         cb('test');
     }
