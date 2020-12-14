@@ -1,5 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const dbController = require('./controllers/dbController.js');
 const googleBooksApi = require('./routes/google-books-api.js');
 
 // Initialize Application
@@ -12,8 +13,11 @@ if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));
 }
 else {
-    process = { env: dotenv.config({ path: `${__dirname + '/.env'}` }).parsed }
+    process.env = dotenv.config({ path: `${__dirname + '/.env'}` }).parsed;
 }
+
+//Initialize Database
+dbController(process);
 
 // API Routes
 googleBooksApi(app, process);
