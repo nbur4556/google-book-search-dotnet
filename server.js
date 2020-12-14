@@ -1,6 +1,6 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const dbController = require('./controllers/dbController.js');
 const googleBooksApi = require('./routes/google-books-api.js');
 
 // Initialize Application
@@ -13,17 +13,8 @@ if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));
 }
 else {
-    process = { env: dotenv.config({ path: `${__dirname + '/.env'}` }).parsed }
+    process.env = dotenv.config({ path: `${__dirname + '/.env'}` }).parsed;
 }
-
-//Initialize Database
-const db = {
-    Book: require('./models/Book.js'),
-    SavedBooks: require('./models/SavedBooks.js')
-}
-
-console.log(process.env.MONGODB_URI);
-// mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
 
 // API Routes
 googleBooksApi(app, process);
@@ -32,6 +23,9 @@ googleBooksApi(app, process);
 app.get('*', (req, res) => {
     res.sendFile(`${__dirname}/client/build/index.html`);
 })
+
+//Initialize Database
+dbController(process);
 
 app.listen(process.env.PORT, () => {
     console.log("listening on localhost:" + process.env.PORT);
