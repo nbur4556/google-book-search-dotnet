@@ -6,6 +6,7 @@ module.exports = {
         SavedBooks: require('../models/SavedBooks.js')
     },
 
+    // Create connection to database
     initializeDatabase: function (process) {
         // Initialize and Connect To Database
         mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -17,8 +18,22 @@ module.exports = {
             });
     },
 
+    // Callback all books in database
     getAllBooks: function (cb) {
         this.db.Book.find({}).then(data => {
+            cb(data);
+        }).catch(err => {
+            cb(err);
+        });
+    },
+
+    // Add a book to the database
+    addBook: function (bookData, cb) {
+        this.db.Book.create({
+            title: bookData.title,
+            description: bookData.description,
+            image: bookData.image
+        }).then(data => {
             cb(data);
         }).catch(err => {
             cb(err);
