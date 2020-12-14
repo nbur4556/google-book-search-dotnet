@@ -16,10 +16,10 @@ else {
 }
 
 //Database
-dbController(process);
+dbController.initializeDatabase(process);
 
 // API Routes
-require('./routes/database-api.js')(app, process);
+require('./routes/database-api.js')(app);
 require('./routes/google-books-api.js')(app, process);
 
 // Create Server
