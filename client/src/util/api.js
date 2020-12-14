@@ -20,7 +20,7 @@ Api.prototype.addSavedBook = function (book, cb) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(book)
     }).then(response => response.json).then(data => {
-        console.log(data);
+        cb(data);
     });
 }
 
@@ -28,7 +28,7 @@ Api.prototype.deleteSavedBook = function (bookId, cb) {
     fetch(`/api/books/delete/${bookId}`, {
         method: 'DELETE'
     }).then(response => response.json()).then(data => {
-        console.log(data);
+        cb(data);
     });
 }
 
