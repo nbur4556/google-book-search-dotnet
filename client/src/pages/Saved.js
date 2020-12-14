@@ -20,10 +20,19 @@ function Saved() {
         });
     }, []);
 
+    // Delete Book from Database
+    const handleDeleteBook = () => {
+        console.log('handleDeleteBook');
+    }
+
     return (
         <section>
             <PageHeader pageName="Saved Books" />
-            <BookResults header="Results" margin="my-4" books={savedState.savedResults} err={null} />
+            <BookResults header="Results"
+                books={savedState.savedResults}
+                err={null}
+                clickText="Delete"
+                handleClick={handleDeleteBook} />
         </section>
     )
 }
