@@ -21,8 +21,12 @@ function Saved() {
     }, []);
 
     // Delete Book from Database
-    const handleDeleteBook = () => {
-        console.log('handleDeleteBook');
+    const handleDeleteBook = (e) => {
+        const bookId = e.target.attributes.databookid.value;
+
+        api.deleteSavedBook(bookId, results => {
+            console.log(results);
+        });
     }
 
     return (

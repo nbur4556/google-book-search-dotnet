@@ -22,7 +22,7 @@ function BookResults(props) {
                                         title: book.title,
                                         description: book.description
                                     }} options={
-                                        (<a href="#0" onClick={props.handleClick}>{props.clickText}</a>)
+                                        (<a href="#0" databookid={book._id} onClick={props.handleClick}>{props.clickText}</a>)
                                     } />
                                 );
                             })
