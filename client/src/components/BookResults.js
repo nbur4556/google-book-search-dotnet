@@ -8,26 +8,24 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import BookItem from './BookItem.js';
 
 function BookResults(props) {
-
     return (
-        <Card className={props.margin}>
+        <Card className="my-4">
             <Card.Header>{props.header}</Card.Header>
             <Card.Body>
                 <ListGroup variant="flush">
-                    {
-                        (props.err === null)
-                            ? props.books.map((book, key) => {
-                                return (
-                                    <BookItem key={key} bookDetails={{
-                                        imageSrc: (book.volumeInfo.imageLinks === undefined)
-                                            ? "https://via.placeholder.com/150" : book.volumeInfo.imageLinks.smallThumbnail,
-                                        title: book.volumeInfo.title,
-                                        description: book.volumeInfo.description
-                                    }} options={(<a href=".">Save</a>)} />
-                                );
-                            })
-                            : <div>Error: No books found.</div>
-                    }
+                    {(props.err === null)
+                        ? props.books.map((book) => {
+                            return (
+                                <BookItem key={book._id} bookDetails={{
+                                    imageSrc: book.image || "https://via.placeholder.com/150",
+                                    title: book.title,
+                                    description: book.description
+                                }} options={
+                                    (<a href="#0" databookid={book._id} onClick={props.handleClick}>{props.clickText}</a>)
+                                } />
+                            );
+                        })
+                        : <div>No books found.</div>}
                 </ListGroup >
             </Card.Body>
         </Card>

@@ -29,10 +29,36 @@ function Search() {
 
     // Searches API for Books
     const handleBookSearch = () => {
-        api.searchBooksByName(searchState.searchTitle, (data, err) => {
-            (!err)
-                ? setSearchState({ ...searchState, searchResults: data, searchError: null })
-                : setSearchState({ ...searchState, searchResults: [], searchError: err });
+        api.searchBooksByName(searchState.searchTitle, (result, err) => {
+            if (!err) {
+                const formattedResults = result.map((book, index) => {
+                    const formattedBook = {
+                        _id: index,
+                        image: book.volumeInfo.imageLinks.smallThumbnail,
+                        title: book.volumeInfo.description,
+                        description: book.volumeInfo.title
+                    }
+
+                    return formattedBook;
+                });
+
+                setSearchState({ ...searchState, searchResults: formattedResults, searchError: null });
+            }
+            else {
+                setSearchState({ ...searchState, searchResults: [], searchError: err });
+            }
+        });
+    }
+
+    // Add Book to Database
+    const handleAddBook = (e) => {
+        const bookId = e.target.attributes.databookid.value;
+        const book = searchState.searchResults[bookId];
+
+        api.addSavedBook({
+            title: book.title,
+            description: book.description,
+            image: book.image
         });
     }
 
@@ -49,7 +75,11 @@ function Search() {
             </InputGroup>
 
             {/* Contains API Results for Found Books */}
-            <BookResults header="Results" margin="my-4" books={searchState.searchResults} err={searchState.searchError} />
+            <BookResults header="Results"
+                books={searchState.searchResults}
+                err={searchState.searchError}
+                clickText="Add"
+                handleClick={handleAddBook} />
         </section>
     );
 }
