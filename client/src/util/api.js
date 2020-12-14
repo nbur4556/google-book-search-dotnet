@@ -14,14 +14,12 @@ Api.prototype.getSavedBooks = function (cb) {
     });
 }
 
-Api.prototype.addSavedBook = function (book, cb) {
+Api.prototype.addSavedBook = function (book) {
     fetch('/api/books/add', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(book)
-    }).then(response => response.json).then(data => {
-        cb(data);
-    });
+    }).then(response => response.json);
 }
 
 Api.prototype.deleteSavedBook = function (bookId, cb) {
