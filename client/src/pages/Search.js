@@ -50,6 +50,7 @@ function Search() {
         });
     }
 
+    // Add Book to Database
     const handleAddBook = (e) => {
         const bookId = e.target.attributes.databookid.value;
         const book = searchState.searchResults[bookId];
@@ -58,8 +59,6 @@ function Search() {
             title: book.title,
             description: book.description,
             image: book.image
-        }, data => {
-            console.log(data);
         });
     }
 

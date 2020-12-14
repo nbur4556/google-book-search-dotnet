@@ -15,17 +15,22 @@ function Saved() {
     });
 
     useEffect(() => {
+        handleGetBooks();
+    }, []);
+
+    // Get all books from database
+    const handleGetBooks = () => {
         api.getSavedBooks(results => {
             setSavedState({ ...savedState, savedResults: results });
         });
-    }, []);
+    }
 
     // Delete Book from Database
     const handleDeleteBook = (e) => {
         const bookId = e.target.attributes.databookid.value;
 
-        api.deleteSavedBook(bookId, results => {
-            console.log(results);
+        api.deleteSavedBook(bookId, () => {
+            handleGetBooks();
         });
     }
 
