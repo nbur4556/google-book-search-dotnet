@@ -4,7 +4,7 @@ const databaseApi = (app) => {
     // Get All Books
     app.get('/api/books', (req, res) => {
         dbController.getAllBooks(data => {
-            res.send(data);
+            res.json(data);
         });
     });
 

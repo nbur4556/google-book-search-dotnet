@@ -17,7 +17,10 @@ module.exports = {
             });
     },
     getAllBooks: function (cb) {
-        console.log('test');
-        cb('test');
+        db.Book.find({}).then(data => {
+            cb(data);
+        }).catch(err => {
+            cb(err);
+        });
     }
 }
