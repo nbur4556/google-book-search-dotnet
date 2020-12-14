@@ -31,8 +31,9 @@ function Search() {
     const handleBookSearch = () => {
         api.searchBooksByName(searchState.searchTitle, (result, err) => {
             if (!err) {
-                const formattedResults = result.map(book => {
+                const formattedResults = result.map((book, index) => {
                     const formattedBook = {
+                        _id: index,
                         image: book.volumeInfo.imageLinks.smallThumbnail,
                         title: book.volumeInfo.description,
                         description: book.volumeInfo.title
@@ -49,8 +50,17 @@ function Search() {
         });
     }
 
-    const handleAddBook = () => {
-        console.log("handleAddBook");
+    const handleAddBook = (e) => {
+        const bookId = e.target.attributes.databookid.value;
+        const book = searchState.searchResults[bookId];
+
+        api.addSavedBook({
+            title: book.title,
+            description: book.description,
+            image: book.image
+        }, data => {
+            console.log(data);
+        });
     }
 
     return (
