@@ -23,7 +23,7 @@ function Saved() {
     return (
         <section>
             <PageHeader pageName="Saved Books" />
-            <BookResults header="Results" margin="my-4" books={null} err="ERROR" />
+            <BookResults header="Results" margin="my-4" books={savedState.savedResults} err={null} />
         </section>
     )
 }

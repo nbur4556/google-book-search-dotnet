@@ -19,14 +19,13 @@ function BookResults(props) {
                             ? props.books.map((book, key) => {
                                 return (
                                     <BookItem key={key} bookDetails={{
-                                        imageSrc: (book.volumeInfo.imageLinks === undefined)
-                                            ? "https://via.placeholder.com/150" : book.volumeInfo.imageLinks.smallThumbnail,
-                                        title: book.volumeInfo.title,
-                                        description: book.volumeInfo.description
+                                        imageSrc: book.image || "https://via.placeholder.com/150",
+                                        title: book.title,
+                                        description: book.description
                                     }} options={(<a href=".">Save</a>)} />
                                 );
                             })
-                            : <div>Error: No books found.</div>
+                            : <div>No books found.</div>
                     }
                 </ListGroup >
             </Card.Body>

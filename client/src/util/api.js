@@ -10,7 +10,7 @@ Api.prototype.formatName = function (name) {
 // Database API Calls
 Api.prototype.getSavedBooks = function (cb) {
     fetch('/api/books').then(response => response.json()).then(data => {
-        console.log(data);
+        cb(data);
     });
 }
 
