@@ -77,7 +77,7 @@ function Search() {
 
     return (
         <section>
-            {(displayAlert) ? <Alert variant="success">Book Successfully Added</Alert> : null}
+            {(displayAlert) ? <Alert className="fixed-top m-5" variant="success">Book Successfully Added</Alert> : null}
 
             <PageHeader pageName="Search Books" />
 
