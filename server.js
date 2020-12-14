@@ -16,6 +16,9 @@ else {
     process.env = dotenv.config({ path: `${__dirname + '/.env'}` }).parsed;
 }
 
+//Initialize Database
+dbController(process);
+
 // API Routes
 googleBooksApi(app, process);
 
@@ -23,9 +26,6 @@ googleBooksApi(app, process);
 app.get('*', (req, res) => {
     res.sendFile(`${__dirname}/client/build/index.html`);
 })
-
-//Initialize Database
-dbController(process);
 
 app.listen(process.env.PORT, () => {
     console.log("listening on localhost:" + process.env.PORT);
