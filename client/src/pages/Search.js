@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 // Bootstrap Components
+import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 import FormControl from 'react-bootstrap/FormControl';
 import InputGroup from 'react-bootstrap/InputGroup';
@@ -21,6 +22,8 @@ function Search() {
         searchResults: [],
         searchError: null
     });
+
+    const [displayAlert, setDisplayAlert] = useState(false);
 
     // Update Book Search Text and State
     const handleBookSearchInput = e => {
@@ -55,6 +58,8 @@ function Search() {
         const bookId = e.target.attributes.databookid.value;
         const book = searchState.searchResults[bookId];
 
+        handleDisplayAlert();
+
         api.addSavedBook({
             title: book.title,
             description: book.description,
@@ -62,8 +67,18 @@ function Search() {
         });
     }
 
+    const handleDisplayAlert = () => {
+        setDisplayAlert(true);
+
+        setTimeout(() => {
+            setDisplayAlert(false);
+        }, 2000);
+    }
+
     return (
         <section>
+            {(displayAlert) ? <Alert className="fixed-top m-5" variant="success">Book Successfully Added</Alert> : null}
+
             <PageHeader pageName="Search Books" />
 
             <InputGroup className="my-4">
