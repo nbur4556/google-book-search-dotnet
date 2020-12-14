@@ -29,11 +29,28 @@ function Search() {
 
     // Searches API for Books
     const handleBookSearch = () => {
-        api.searchBooksByName(searchState.searchTitle, (data, err) => {
-            (!err)
-                ? setSearchState({ ...searchState, searchResults: data, searchError: null })
-                : setSearchState({ ...searchState, searchResults: [], searchError: err });
+        api.searchBooksByName(searchState.searchTitle, (result, err) => {
+            if (!err) {
+                const formattedResults = result.map(book => {
+                    const formattedBook = {
+                        image: book.volumeInfo.imageLinks.smallThumbnail,
+                        title: book.volumeInfo.description,
+                        description: book.volumeInfo.title
+                    }
+
+                    return formattedBook;
+                });
+
+                setSearchState({ ...searchState, searchResults: formattedResults, searchError: null });
+            }
+            else {
+                setSearchState({ ...searchState, searchResults: [], searchError: err });
+            }
         });
+    }
+
+    const handleAddBook = () => {
+        console.log("handleAddBook");
     }
 
     return (
@@ -49,7 +66,11 @@ function Search() {
             </InputGroup>
 
             {/* Contains API Results for Found Books */}
-            <BookResults header="Results" margin="my-4" books={searchState.searchResults} err={searchState.searchError} />
+            <BookResults header="Results"
+                books={searchState.searchResults}
+                err={searchState.searchError}
+                clickText="Add"
+                handleClick={handleAddBook} />
         </section>
     );
 }
