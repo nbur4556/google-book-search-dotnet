@@ -3,7 +3,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const SavedBooksSchema = new Schema({
-    name: String
+    name: {
+        type: String,
+        unique: true
+    }
 });
 
 const SavedBooks = mongoose.model('SavedBooks', SavedBooksSchema);

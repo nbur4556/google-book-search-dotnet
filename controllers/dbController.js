@@ -12,9 +12,6 @@ module.exports = function (process) {
 
     // Create Initial Book List Collection
     db.SavedBooks.create({ name: "My Book List" })
-        .then(response => {
-            console.log(response);
-        })
         .catch(({ message }) => {
             console.log(message);
         });
