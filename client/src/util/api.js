@@ -2,12 +2,37 @@ function Api() {
     this.searchUrl = '/search/';
 }
 
-// Google API Calls
 Api.prototype.formatName = function (name) {
     const formattedName = name.split(' ').join('+').toLowerCase();
     return formattedName
 }
 
+// Database API Calls
+Api.prototype.getSavedBooks = function (cb) {
+    fetch('/api/books').then(response => response.json()).then(data => {
+        console.log(data);
+    });
+}
+
+Api.prototype.addSavedBook = function (book, cb) {
+    fetch('/api/books/add', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(book)
+    }).then(response => response.json).then(data => {
+        console.log(data);
+    });
+}
+
+Api.prototype.deleteSavedBook = function (bookId, cb) {
+    fetch(`/api/books/delete/${bookId}`, {
+        method: 'DELETE'
+    }).then(response => response.json()).then(data => {
+        console.log(data);
+    });
+}
+
+// Google API Calls
 Api.prototype.searchBooksByName = function (name, cb) {
     const urlName = this.formatName(name);
 
