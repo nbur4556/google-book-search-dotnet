@@ -38,8 +38,8 @@ function Search() {
                     const formattedBook = {
                         _id: index,
                         image: book.volumeInfo.imageLinks.smallThumbnail,
-                        title: book.volumeInfo.description,
-                        description: book.volumeInfo.title
+                        title: book.volumeInfo.title,
+                        description: book.volumeInfo.description
                     }
 
                     return formattedBook;
