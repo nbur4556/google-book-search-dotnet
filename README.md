@@ -4,11 +4,11 @@
 
 [View Book List](https://thawing-refuge-28497.herokuapp.com/)
 
+![Saved books screen with current reading list](./docs/saved-books-image.png)
+
 ## Description
 
 Search for Books that you want to read. Browse through available options, and save to your reading list.
-
-<!-- ![SCREENSHOT](SCREENSHOT PATH) -->
 
 ## Table of Contents
 
@@ -19,6 +19,8 @@ Search for Books that you want to read. Browse through available options, and sa
 * [Contribution](#Contribution)
 * [Tests](#Tests)
 * [Contact](#Contact)
+
+![Search results page with results for "Eragon"](./docs/search-results-image.png)
 
 ## Installation
 
