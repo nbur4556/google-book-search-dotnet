@@ -2,7 +2,7 @@
 
 # Book List
 
-[View Book List](https://thawing-refuge-28497.herokuapp.com/)
+<!-- [View Book List](https://thawing-refuge-28497.herokuapp.com/) -->
 
 ![Saved books screen with current reading list](./docs/saved-books-image.png)
 
